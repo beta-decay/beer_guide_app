@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="./stylesheet.css" />
+		<script src="jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 		<div id="main-content">
@@ -10,5 +11,69 @@
 			<img src="./loading_icon.gif" height=100px />
 		</div>
 		<br/>
+		<script>
+			function getData(lat, lon) {
+				var url = "https://api.yelp.com/v3/businesses/search?sort_by=distance&term=pub&latitude="+lat+"&longitude="+lon;
+
+				var http = new XMLHttpRequest();
+				http.open("GET", url, true);
+				http.setRequestHeader('Authorization', 'Bearer '+access_token);
+
+				http.onreadystatechange = function() {
+				    if(http.readyState == 4 && http.status == 200) {
+				        var data = JSON.parse(http.responseText);
+
+				        var businesses = data.businesses;
+				        var html = "<table>";
+
+				        for (var i = 0; i < businesses; i++) {
+				        	var pub = businesses[i];
+				        	var name = pub.name;
+				        	var distance = Math.floor(pub.distance*0.000621371*100)/100 + " mi";
+				        	var phone = pub.phone;
+				        	var rating = pub.rating;
+				        	var price = pub.price;
+				        	var img = pub.image_url;
+
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/>User rating:"+rating+"/5<br/><br/>Price:"+price+"<br/><br/>Distance"+distance+"</td><td id=\"image\"><img src=\""+img+"\" />"
+				        }
+
+				        html += "</table>";
+				        document.getElementById("main-content").innerHTML = html;
+				    }
+				}
+				http.send(null);
+			}
+
+			function getLoc() {
+				navigator.geolocation.getCurrentPosition(function(pos) {
+					getData(pos.coords.latitude, pos.coords.longitude);
+				}, function(e) {
+					alert("Have you turned location on?");
+					document.getElementById("main-content").innerHTML = "<h1>Something went wrong</h1><h2>Reload the page from the menu bar</h2>";
+				}, {
+					timeout: 10000,
+					enableHighAccuracy: true
+				});
+			}
+
+			// Get API Key
+			var access_token;
+			var req = new XMLHttpRequest();
+			var url = "https://api.yelp.com/oauth2/token?client_secret=IEIWyAODCMquJlvl3iDn2KokMN4UjGpi3soDAQyT7pI07UxungFMBpAhgGgPDdS5&client_id=SXV2iuaLjGYb5DX8OgwjtQ&grant_type=client_credentials";
+			req.open("POST", url, true);
+
+			req.onreadystatechange = function() {
+    			if(req.readyState == 4 && req.status == 200) {
+    				var data = JSON.parse(req.responseText);
+    				//console.log(data);
+			        access_token = data.access_token;
+			    }
+			}
+			req.send(null);
+
+			// Get location
+			getLoc();
+		</script>
 	</body>
 </html>
