@@ -7,15 +7,21 @@
 				width: 50%;
 				height: 25px;
 			}
+
 			button {
 				width: 20%;
 				height: 30px;
+			}
+
+			p {
+				padding: 5px;
+				text-align: justify;
 			}
 		</style>
 	</head>
 	<body>
 		<h2>Search</h2>
-		<input id="search" placeholder="Search for a beer" />&nbsp;<button onclick="startSearch()">Go!</button>
+		<input id="search" placeholder="Search for a beer" onkeydown = "if (event.keyCode == 13){ document.getElementById('searchBtn').click(); }"/>&nbsp;<button id="searchBtn" onclick="startSearch()">Go!</button>
 		<div id="content-here"></div>
 		<script>
 			var api_key = "5fa068c360dfc35b3136a2325a6c80ca";
@@ -29,12 +35,12 @@
 
 				req.onload = function(e) {
    					if (req.readyState == 4 && req.status == 200) {
-   						alert(JSON.stringify(req.responseText));
+   						//alert(JSON.stringify(req.responseText));
    						var data = JSON.parse(req.responseText);
 
    						var beer = data.data[0];
 
-   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1><p>ABV: "+beer.abv+"%<br/>"+beer.description+"</p>";
+   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1><p><strong>ABV: "+beer.abv+"%</strong><br/><br/>"+beer.description+"</p><h3>Style:</h3><ul><li>"+beer.style.name+"</li><li>+"beer.style.description+"</li></ul>";
    					}
    				}
    				req.send(null);
