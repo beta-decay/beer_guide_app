@@ -2,11 +2,42 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="./stylesheet.css" />
+		<style>
+			input {
+				width: 25%;
+				height: 25px;
+			}
+			button {
+				width: 10%;
+				height: 30px;
+			}
+		</style>
 	</head>
 	<body>
 		<h2>Search</h2>
-		<input placeholder="Search for things here" width=75% />
-		<br/>
-		<button>Go!</button>
+		<input id="search" placeholder="Search for a beer" />&nbsp;<button onclick="startSearch()">Go!</button>
+		<div id="content-here"></div>
+		<script>
+			var api_key = "5fa068c360dfc35b3136a2325a6c80ca";
+
+			function startSearch() {
+				var searchItem = document.getElementById("search").value;
+				var url = "http://api.brewerydb.com/v2/beers?key="+api_key+"&name="+encodeURIComponent(searchItem);
+
+				var req = new XMLHttpRequest();
+				req.open("GET", url, true);
+
+				req.onload = function(e) {
+   					if (req.readyState == 4 && req.status == 200) {
+   						var data = JSON.parse(req.responseText);
+
+   						var beer = data.data[0];
+
+   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1>";
+   					}
+   				}
+   				req.send(null);
+			}
+		</script>
 	</body>
 </html>
