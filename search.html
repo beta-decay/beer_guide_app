@@ -22,7 +22,7 @@
 
 			function startSearch() {
 				var searchItem = document.getElementById("search").value;
-				var url = "http://api.brewerydb.com/v2/beers?key="+api_key+"&name="+encodeURIComponent(searchItem);
+				var url = "http://api.brewerydb.com/v2/search?key="+api_key+"&q="+encodeURIComponent(searchItem);
 
 				var req = new XMLHttpRequest();
 				req.open("GET", url, true);
@@ -34,7 +34,7 @@
 
    						var beer = data.data[0];
 
-   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1>";
+   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1><p>"+beer.description+"</p>";
    					}
    				}
    				req.send(null);
