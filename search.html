@@ -34,7 +34,7 @@
 
    						var beer = data.data[0];
 
-   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1><p>"+beer.description+"</p>";
+   						document.getElementById("content-here").innerHTML = "<hr /><h1>"+beer.name+"</h1><p>ABV: "+beer.abv+"%<br/>"+beer.description+"</p>";
    					}
    				}
    				req.send(null);
