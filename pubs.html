@@ -3,6 +3,19 @@
 	<head>
 		<link rel="stylesheet" href="./stylesheet.css" />
 		<script src="jquery-3.2.1.min.js"></script>
+		<style>
+			tr {
+				border-bottom: 1px solid black;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			td {
+				padding: 5px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="main-content">
@@ -39,7 +52,11 @@
 				        	var price = pub.price;
 				        	var img = pub.image_url;
 
-				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/>User rating:"+rating+"/5<br/><br/>Price:"+price+"<br/><br/>Distance"+distance+"</td><td id=\"image\"><img src=\""+img+"\" />"
+				        	if (price === undefined) {
+				        		price = "?";
+				        	}
+
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"</td><td id=\"image\"><img src=\""+img+"\" width=30% />"
 				        }
 
 				        html += "</table>";
