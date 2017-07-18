@@ -39,7 +39,7 @@
 				        }
 
 				        html += "</table>";
-				        alert(html);
+				        //alert(html);
 				        document.getElementById("main-content").innerHTML = html;
 				    }
 				}
@@ -69,12 +69,11 @@
     				var data = JSON.parse(req.responseText);
     				//console.log(data);
 			        access_token = data.access_token;
+			        // Get location
+					getLoc();
 			    }
 			}
 			req.send(null);
-
-			// Get location
-			getLoc();
 		</script>
 	</body>
 </html>
