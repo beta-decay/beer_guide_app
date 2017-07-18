@@ -14,7 +14,11 @@
 		<script>
 			function getData(lat, lon) {
 				var url = "https://api.yelp.com/v3/businesses/search?sort_by=distance&term=pub&latitude="+lat+"&longitude="+lon;
+				alert(access_token);
 
+				if (access_token === undefined) {
+					access_token = "YVeXQlXRroPwUe14e1X_MZE3_AnJUIYJu-4P_eqJxCmQECO70fg-j4lyzw6EM8vbSAQO1QD9YdtlH-dKQWhbMzulCf2lqtiffGMYxA5eOh8IcnNlhZhNLhf6pDdaWXYx";
+				}
 				var http = new XMLHttpRequest();
 				http.open("GET", url, true);
 				http.setRequestHeader('Authorization', 'Bearer '+access_token);
@@ -22,7 +26,7 @@
 				http.onreadystatechange = function() {
 				    if(http.readyState == 4 && http.status == 200) {
 				        var data = JSON.parse(http.responseText);
-
+				        alert(JSON.stringify(data));
 				        var businesses = data.businesses;
 				        var html = "<table>";
 
