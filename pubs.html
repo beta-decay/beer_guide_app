@@ -68,7 +68,7 @@
 				        		price = "?";
 				        	}
 
-				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3><a href=\"tel:"+phone+"\">"+phone+"</a><br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br /></td><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>"
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3><a href=\"tel:"+phone.replace("+44","0")+"\">"+phone+"</a><br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br /></td><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>"
 				        }
 
 				        html += "</table>";
