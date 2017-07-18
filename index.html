@@ -19,7 +19,7 @@
 			}
 
 			td {
-				width: calc(100%/3);
+				width: calc(100%/2);
 				text-align: center;
 				padding: 10px;
 			}
@@ -52,11 +52,10 @@
 				<tr>
 					<td onclick="search()" style="border-right: 1px solid #8e7510;">Beer Search</td>
 					<td onclick="pubs()" style="border-right: 1px solid #8e7510;">Pub Finder</td>
-					<td onclick="about()">About</td>
 				</tr>
 			</table>
 		</div>
-		<br/><br/>
+		<br/>
 		<div class="iframe1">
 			<iframe id="frame" src="./search.html" frameborder="0" allowfullscreen></iframe>
 		</div>
@@ -67,10 +66,6 @@
 
 			function search() {
 				document.getElementById("frame").src = "./search.html";
-			}
-
-			function about() {
-				document.getElementById("frame").src = "./about.html";
 			}
 		</script>
 	</body>
