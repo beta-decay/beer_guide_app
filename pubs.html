@@ -16,6 +16,10 @@
 			td {
 				padding: 5px;
 			}
+
+			iframe {
+				width: 75%;
+			}
 		</style>
 	</head>
 	<body>
@@ -44,7 +48,9 @@
 				        var businesses = data.businesses;
 				        var html = "<table>";
 
-				        for (var i = 0; i < businesses.length; i++) {
+				        var nPubs = Math.min(15, businesses.length);
+
+				        for (var i = 0; i < nPubs; i++) {
 				        	var pub = businesses[i];
 				        	var name = pub.name;
 				        	var distance = Math.floor(pub.distance*0.000621371*100)/100 + " mi";
@@ -57,7 +63,7 @@
 				        		price = "?";
 				        	}
 
-				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br /><br /></td><td id=\"image\"><img src=\""+img+"\" width=50% />"
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"</td><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.soordinates.longitude+"\"></iframe><br/><br/></td>"
 				        }
 
 				        html += "</table>";
