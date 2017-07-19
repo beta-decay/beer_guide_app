@@ -5,7 +5,7 @@
 		<style>
 			body {
 				text-align: left;
-				overflow: hidden;
+				overflow-y: hidden;
 			}
 			.menu-bar {
 				background: #ffc877;
@@ -68,6 +68,8 @@
 			function search() {
 				document.getElementById("frame").src = "./search.html";
 			}
+
+			document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
 		</script>
 	</body>
 </html>
