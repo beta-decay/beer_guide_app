@@ -47,7 +47,7 @@
 				        
                         var review = data.reviews[0].text;
                         
-                        document.getElementById(id).innerHTML = "<em>"+review+"</em>";
+                        document.getElementById(id).innerHTML = "<em>\""+review+"\"</em>";
 				    }
 				}
 				http.send(null);
@@ -89,7 +89,7 @@
                             
                             
                             
-				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br/><div id=\""+pub.id+"\"><a href=\"javascript:getReview('"+pub.id+"')\">See a Review</a></div></td><br/><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>";
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br/><br/><span id=\""+pub.id+"\"><a href=\"javascript:getReview('"+pub.id+"')\">See a Review</a></span><br/></td><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>";
 				        }
 
 				        html += "</table>";
