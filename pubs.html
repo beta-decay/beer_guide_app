@@ -44,6 +44,7 @@
 		</style>
 	</head>
 	<body>
+        <h2>Pub Finder</h2>
         <table style="margin-left: auto;margin-right: auto;width: 100%">
 			<tr>
 				<td colspan="2">
@@ -167,7 +168,7 @@
                var url = elem.attr('href');
                if (url.indexOf('http://') !== -1) {
                    e.preventDefault();
-                   window.open(url, '_system');
+                   window.open(url, '_blank');
                    return false;
                }
             });
