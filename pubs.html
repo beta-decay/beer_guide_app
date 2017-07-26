@@ -168,7 +168,7 @@
                var url = elem.attr('href');
                if (url.indexOf('http://') !== -1 || url.indexOf('https://') !== -1) {
                    e.preventDefault();
-                   window.open(url, '_blank', location='yes');
+                   window.open(url, '_blank', 'location=yes');
                    return false;
                }
             });
