@@ -166,9 +166,9 @@
             $(document).on('click', 'a', function (e) {
                var elem = $(this);
                var url = elem.attr('href');
-               if (url.indexOf('http://') !== -1) {
+               if (url.indexOf('http://') !== -1 || url.indexOf('https://') !== -1) {
                    e.preventDefault();
-                   window.open(url, '_blank');
+                   window.open(url, '_blank', location='yes');
                    return false;
                }
             });
