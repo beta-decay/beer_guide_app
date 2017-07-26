@@ -6,7 +6,7 @@
 	<author>
         Beta Decay
     </author>
-	<plugin name="org.apache.cordova.geolocation" version="0.3.12"/>
+	<plugin name="org.apache.cordova.geolocation" spec="0.3.12" source="pgb" />
 	<content src="index.html"/>
 	<access origin="*"/>
 	<plugin version="1" name="cordova-plugin-whitelist"/>
