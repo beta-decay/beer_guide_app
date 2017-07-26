@@ -8,10 +8,6 @@
 				border-bottom: 1px solid black;
 			}
 
-			#map:last-child {
-				border-bottom: 1px none black;
-			}
-
 			table {
 				width: 100%;
 				border-collapse: collapse;
@@ -38,6 +34,26 @@
 		</div>
 		<br/>
 		<script>
+            function getReview(id) {
+                var url = "https://api.yelp.com/v3/businesses/"+id+"/reviews";
+                
+                var http = new XMLHttpRequest();
+				http.open("GET", url, true);
+				http.setRequestHeader('Authorization', 'Bearer '+access_token);
+                
+                http.onreadystatechange = function() {
+				    if(http.readyState == 4 && http.status == 200) {
+				        var data = JSON.parse(http.responseText);
+				        
+                        var review = data.reviews[0].text;
+                        
+                        document.getElementById(id).innerHTML = "<em>"+review+"</em>";
+				    }
+				}
+				http.send(null);
+			}
+            }
+            
 			function getData(lat, lon) {
 				var url = "https://api.yelp.com/v3/businesses/search?sort_by=distance&term=pub&latitude="+lat+"&longitude="+lon;
 				//alert(access_token);
@@ -71,8 +87,10 @@
 				        	if (price === undefined) {
 				        		price = "?";
 				        	}
-
-				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br /></td><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>"
+                            
+                            
+                            
+				        	html += "<tr><td id=\"info\"><h3>"+name+"</h3>"+phone+"<br/><br/><strong>User rating:</strong> "+rating+"/5<br/><strong>Price:</strong> "+price+"<br/><strong>Distance:</strong> "+distance+"<br/><div id=\""+pub.id+"\"><a href=\"javascript:getReview('"+pub.id+"')\">See a Review</a></div></td><br/><td id=\"image\"><img src=\""+img+"\" width=50% /><tr><td colspan=\"2\" id=\"map\"><iframe frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyD0nveMk1jf-vkKDWJU6yun6-fzGzLG72U &q="+pub.coordinates.latitude+",+"+pub.coordinates.longitude+"\"></iframe><br/><br/></td></tr>"
 				        }
 
 				        html += "</table>";

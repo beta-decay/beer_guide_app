@@ -53,7 +53,7 @@
    							for (var i = 0; i < data.data.length; i++) {
 	   							var beer = data.data[i];
 
-	   							document.getElementById("content-here").innerHTML += "<br/><br/><hr noshade /><h1>"+beer.name+"</h1><p><strong>ABV: "+beer.abv+"%<br/>IBU: "+beer.ibu+"</strong><br/><br/>"+beer.description+"</p><h3>Style:</h3><p><strong>"+beer.style.name+"</strong><br/><br/>"+beer.style.description+"</p>";
+	   							document.getElementById("content-here").innerHTML += "<br/><br/><hr noshade /><h1>"+beer.name+"</h1><p><strong>ABV: "+beer.abv+"%<br/>IBU: "+beer.ibu+"</strong><br/><br/>"+(beer.description||"No description")+"</p><h3>Style:</h3><p><strong>"+beer.style.name+"</strong><br/><br/>"+(beer.style.description||"No description")+"</p>";
 	   						}
    						}
    					}
