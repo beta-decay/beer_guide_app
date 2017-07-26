@@ -8,6 +8,7 @@
     </author>
 	<plugin name="cordova-plugin-geolocation" />
     <plugin name="cordova-plugin-inappbrowser" />
+    <preference name="stay-in-webview" value="false" />
 	<content src="index.html"/>
 	<access origin="*"/>
 	<plugin version="1" name="cordova-plugin-whitelist"/>
