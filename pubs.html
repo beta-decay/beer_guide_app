@@ -78,7 +78,7 @@
 				        
                         var review = data.reviews[0].text;
                         
-                        document.getElementById(id).innerHTML = "<em><a href=\""+data.reviews[0].url+"\">\""+review+"\"</a></em>";
+                        document.getElementById(id).innerHTML = "<em>"+review+"</em>";
 				    }
 				}
 				http.send(null);
@@ -164,16 +164,6 @@
    				}
    				req.send(null);
 			}
-            
-            $(document).on('click', 'a', function (e) {
-               var elem = $(this);
-               var url = elem.attr('href');
-               if (url.indexOf('http://') !== -1 || url.indexOf('https://') !== -1) {
-                   e.preventDefault();
-                   navigator.app.loadUrl('https://google.com/', { openExternal:true });
-                   return false;
-               }
-            });
 
 
 			// Get API Key
