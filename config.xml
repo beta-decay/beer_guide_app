@@ -7,6 +7,7 @@
         Beta Decay
     </author>
 	<plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-inappbrowser"
 	<content src="index.html"/>
 	<access origin="*"/>
 	<plugin version="1" name="cordova-plugin-whitelist"/>
